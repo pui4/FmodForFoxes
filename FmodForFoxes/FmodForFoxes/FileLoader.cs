@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace FmodForFoxes
+﻿namespace FmodForFoxes
 {
 	public static class FileLoader
 	{
@@ -16,7 +14,11 @@ namespace FmodForFoxes
 			// They will not work on some platforms.
 
 			// TitleContainer is cross-platform Monogame file loader.
-			var stream = TitleContainer.OpenStream(Path.Combine(RootDirectory, path));
+			var stream = new FileStream(
+				Path.Combine(RootDirectory, path), 
+				FileMode.Open,
+				FileAccess.Read);
+
 
 			return LoadFileAsBuffer(stream);
 		}
